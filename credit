@@ -1,0 +1,96 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+int main(void)
+{
+    long card = get_long("Enter your card #?\n");
+
+    long length = log10(card) + 1;
+    long mod = 1;
+    long divide = 0;
+    long divider =0;
+    long divider2 =0;
+    long divide1 = 0;
+    int evensum = 0;
+    int oddsum = 0;
+    long fourt = pow (10,14);
+    long sixt = pow (10,15);
+    long fift = pow(10,13);
+    long thirt = pow (10,12);
+    
+    for(int i = 0; i < length; i++){
+     if (i%2 != 0)
+     {  
+        divide = (card/mod) % 10;
+         // divider = ((divide - divide1)/mod) *10;
+        divider = divide *2;
+        if (divider >= 10)
+        {
+           divider = (divider % 10) +1;
+        }
+        evensum = divider + evensum;
+         
+     }  
+     else
+     {
+         divide1 = (card/mod) % 10;
+        // divider2 = ((divide1 - divide)/mod) *10;
+         
+         oddsum = oddsum + divide1;
+     }
+     mod = mod *10;
+    }
+    long sum = oddsum + evensum;
+    if (sum % 10 == 0)
+    {
+        if (length == 15)
+        {
+            if ((card/ fift) == 34 || (card/ fift) == 34 )
+            {
+                printf ("AE");
+            }
+            
+            else 
+            {
+                printf ("INVALID");
+            }
+        }
+        else if (length == 13)
+         {
+            if ((card/ thirt) == 4)
+            {
+                printf ("VISA");
+            }
+            else 
+            {
+                printf ("INVooALID");
+            }
+        }
+        else if (length == 16)
+        {
+            if ((card/ sixt) == 4 )
+            {
+               printf ("Visa");
+            }
+            else if ((card/ fourt) == 55 || (card/ fourt) == 54 ||(card/ fourt) == 53 ||(card/ fourt)                        == 52 || (card/ fourt) == 51 )
+            {
+                printf ("Mastercard");
+            }
+            else 
+            {
+                printf ("INVisALID");
+            }
+
+        }
+        else
+        {      
+            printf ("Valid #, invalid card");   
+        }
+     
+    }
+    else 
+    {
+        printf("INVALID");
+    }
+    
+}
